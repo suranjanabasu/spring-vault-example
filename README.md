@@ -1,10 +1,10 @@
-#TO GET STARTED :
+# TO GET STARTED :
 You will need the following:
 
 * mysql up and running
 * vault up and running
 
-#How to get started with a local running MYSQl and Vault:
+# How to get started with a local running MYSQl and Vault:
 
 - Just run :
     docker-compose up -d
@@ -22,7 +22,7 @@ You will need the following:
    CREATE USER 'spring'@'localhost' IDENTIFIED BY 'vault';
    GRANT ALL PRIVILEGES ON *.* TO 'spring' WITH GRANT OPTION;
    
-#Vault setup with MYSQL access 
+# Vault setup with MYSQL access 
 
 docker exec -it dev-vault /bin/sh
 export VAULT_TOKEN="00000000-0000-0000-0000-000000000000"
@@ -44,7 +44,7 @@ https://www.vaultproject.io/docs/secrets/mysql/index.html
 
 *We are all set to connect to the database through vault without having to hardcode any user details in application.yml
 
-None of the above setup will be required when you have running instances of mysql or vault that you need to connect to. The above setup is to get these services up locally
+None of the above setup will be required when you have a running instances of mysql or vault that you need to connect to. The above setup is to get these services up locally
 
 Things to note:
 spring-cloud uses bootstrap.yml.
