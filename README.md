@@ -1,3 +1,5 @@
+# Connecting to MYSQL using Hashicorp Vault and Spring Boot
+
 # TO GET STARTED :
 You will need the following:
 
@@ -47,7 +49,7 @@ The above setup is to get these services up locally. This will not be required w
 
 Things to keep in mind:
 * spring-cloud uses bootstrap.yml.
-*Keep a note of the vault token and the mysql role used to access 
+* Keep a note of the vault token and the mysql role used to access 
   
    
     
