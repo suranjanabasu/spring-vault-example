@@ -15,34 +15,32 @@ You will need the following:
    For vault to interact with the mysql, you will need to create a user and password
    Run the following commands:
    
-   *Enter the mysql container 
-   docker exec -it vault_db_1 mysql -uroot -ppassword
+   * Enter the mysql container 
+    * docker exec -it vault_db_1 mysql -uroot -ppassword
    
    * Create a non root user. This user will be used by vault to create a dynamic user for accessing mysql without having to hardcode any user information in application
-   CREATE USER 'spring'@'localhost' IDENTIFIED BY 'vault';
-   GRANT ALL PRIVILEGES ON *.* TO 'spring' WITH GRANT OPTION;
+       * CREATE USER 'spring'@'localhost' IDENTIFIED BY 'vault';
+       * GRANT ALL PRIVILEGES ON *.* TO 'spring' WITH GRANT OPTION;
    
 # Vault setup with MYSQL access 
 
-docker exec -it dev-vault /bin/sh
-export VAULT_TOKEN="00000000-0000-0000-0000-000000000000"
-export VAULT_ADDR="http://127.0.0.1:8200"
+* docker exec -it dev-vault /bin/sh
+* export VAULT_TOKEN="00000000-0000-0000-0000-000000000000"
+* export VAULT_ADDR="http://127.0.0.1:8200"
 
-**Note: The use of 'http' is only for demonstration purposes
+** Note: The use of 'http' is only for demonstration purposes
 
-vault secrets enable mysql
-vault write mysql/config/connection connection_url="spring:vault@tcp(vault_db_1:3306)/"
-export VAULT_ADDR="http://127.0.0.1:8200"
-*Create a role. The role will be used by the application to connect to the mysql db
-vault write mysql/roles/readonly sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';"
-
-vault read mysql/creds/readonly
+* vault secrets enable mysql
+* vault write mysql/config/connection connection_url="spring:vault@tcp(vault_db_1:3306)/"
+* Create a role. The role will be used by the application to connect to the mysql db
+* vault write mysql/roles/readonly sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';"
+* vault read mysql/creds/readonly
 
 More information on creating dynamic mysql user in vault can be found here
 
 https://www.vaultproject.io/docs/secrets/mysql/index.html
 
-*We are all set to connect to the database through vault without having to hardcode any user details in application.yml
+* We are all set to connect to the database through vault without having to hardcode any user details in application.yml
 
 None of the above setup will be required when you have a running instances of mysql or vault that you need to connect to. The above setup is to get these services up locally
 
