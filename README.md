@@ -32,9 +32,10 @@ You will need the following:
 
 * vault secrets enable mysql
 * vault write mysql/config/connection connection_url="spring:vault@tcp(vault_db_1:3306)/"
-* Create a role. The role will be used by the application to connect to the mysql db
 * vault write mysql/roles/readonly sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';"
 * vault read mysql/creds/readonly
+
+** Note The role created will be used by the application to connect to the mysql db
 
 More information on creating dynamic mysql user in vault can be found here
 
@@ -42,11 +43,11 @@ https://www.vaultproject.io/docs/secrets/mysql/index.html
 
 * We are all set to connect to the database through vault without having to hardcode any user details in application.yml
 
-None of the above setup will be required when you have a running instances of mysql or vault that you need to connect to. The above setup is to get these services up locally
+The above setup is to get these services up locally. This will not be required when you have a running instances of mysql or vault that you need to connect to, as in production or QA. 
 
-Things to note:
-spring-cloud uses bootstrap.yml.
-Keep a note of the vault token and the mysql role used to access 
+Things to keep in mind:
+* spring-cloud uses bootstrap.yml.
+*Keep a note of the vault token and the mysql role used to access 
   
    
     
