@@ -1,6 +1,6 @@
-# Connecting to MYSQL using Hashicorp Vault and Spring Boot
+# Connecting Vault using Spring
 
-# TO GET STARTED :
+# To get Started :
 You will need the following:
 
 * vault up and running
