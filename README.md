@@ -33,7 +33,7 @@ You will need the following:
 ** Note: The use of 'http' is only for demonstration purposes
 
 * vault secrets enable mysql
-* vault write mysql/config/connection connection_url="spring:vault@tcp(vault_db_1:3306)/"
+* vault write mysql/config/connection connection_url="spring:vault@tcp(dev-mysql:3306)/"
 * vault write mysql/roles/readonly sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';"
 * vault read mysql/creds/readonly
 

@@ -20,6 +20,7 @@ services:
       - IPC_LOCK
   db:
     image: mysql/mysql-server:5.7
+    container_name: dev-mysql
     restart: always
     environment:
      MYSQL_ROOT_PASSWORD: 'password'
