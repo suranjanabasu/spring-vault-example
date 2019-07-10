@@ -16,6 +16,7 @@
 	<description>Demo project for Spring Boot vault integration</description>
 	<modules>
 		<module>vault_mysql</module>
+		<module>vault_keyvalue</module>
 
 	</modules>
 
